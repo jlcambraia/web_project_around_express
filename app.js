@@ -9,6 +9,10 @@ const app = express();
 app.use("/users", usersRouter);
 app.use("/cards", cardRouter);
 
+app.use((req, res) => {
+  res.status(404).json({ message: "A solicitação não foi encontrada" });
+});
+
 app.listen(PORT, () => {
   console.log(`O aplicativo está escutando na porta ${PORT}`);
 });
