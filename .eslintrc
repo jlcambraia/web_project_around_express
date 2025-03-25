@@ -1,4 +1,7 @@
 {
   "extends": "airbnb-base",
-  "linebreak-style": ["off"]
+  "linebreak-style": ["off"],
+  "rules": {
+    "no-console": "off"
+  }
 }
