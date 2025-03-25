@@ -1,18 +1,38 @@
 const router = require("express").Router();
-const users = require("../data/users.json");
+const fs = require("fs");
+const path = require("path");
+
+const users = path.join(__dirname, "../data/users.json");
 
 router.get("/", (req, res) => {
-  res.send(users);
+  fs.readFile(users, { encoding: "utf8" }, (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    res.send(data);
+  });
 });
 
 router.get("/:id", (req, res) => {
-  const user = users.find((user) => user._id === req.params.id);
+  fs.readFile(users, { encoding: "utf8" }, (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
 
-  if (!user) {
-    return res.status(404).send({ message: "ID do usuário não encontrado" });
-  }
+    const userList = JSON.parse(data);
 
-  res.send(user);
+    const user = userList.find(
+      (selectedUser) => selectedUser._id === req.params.id
+    );
+
+    if (!user) {
+      return res.status(404).send({ message: "ID do usuário não encontrado" });
+    }
+
+    res.send(user);
+  });
 });
 
 module.exports = router;
