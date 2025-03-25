@@ -2,18 +2,22 @@
   "name": "web_project_around_express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint"
+    "lint": "npx eslint",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "João Luiz Cambraia",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.56.0"
+    "eslint": "^8.56.0",
+    "nodemon": "^3.1.9"
   },
   "dependencies": {
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.31.0"
+    "eslint-plugin-import": "^2.31.0",
+    "express": "^4.21.2"
   }
 }
