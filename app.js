@@ -5,5 +5,5 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.listen(PORT, () => {
-  console.log(`App listening at port ${PORT}`);
+  console.log(`O aplicativo está escutando na porta ${PORT}`);
 });
