@@ -10,29 +10,29 @@ Este projeto é uma API backend desenvolvida com Express.js que fornece endpoint
 
 ## Funcionalidades:
 
-# Rota de Usuários:
+### Rota de Usuários:
 
 - Listar todos os usuários
 - Buscar usuários específicos por ID
 
-# Rota de Cards:
+### Rota de Cards:
 
 - Listar todos os cards
 
-# Tratamento de Rotas Não Encontradas:
+### Tratamento de Rotas Não Encontradas:
 
 - Resposta personalizada para rotas inexistentes
 
 ## Técnicas e Tecnologias Utilizadas:
 
-# Tecnologias
+### Tecnologias
 
 - Node.js
 - Express
 - FS para leitura de arquivos JSON
 - Path para manipulação de caminhos de arquivo
 
-# Técnicas
+### Técnicas
 
 - Roteamento modular
 - Tratamento de erros
