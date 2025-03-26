@@ -9,11 +9,11 @@ const app = express();
 app.use("/users", usersRouter);
 app.use("/cards", cardRouter);
 
-const handlePageNotFound = (req, res, next) => {
+const handlePageNotFound = (req, res) => {
   res.status(404).json({ message: "A solicitação não foi encontrada" });
 };
 
-const handleServerError = (err, req, res, next) => {
+const handleServerError = (err, req, res) => {
   res.status(500).json({ message: "Ocorreu um erro no servidor" });
 };
 
