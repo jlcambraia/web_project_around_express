@@ -28,7 +28,8 @@ router.get("/:id", (req, res) => {
     );
 
     if (!user) {
-      return res.status(404).send({ message: "ID do usuário não encontrado" });
+      res.status(404).send({ message: "ID do usuário não encontrado" });
+      return;
     }
 
     res.send(user);
