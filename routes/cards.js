@@ -4,10 +4,10 @@ const path = require("path");
 
 const cards = path.join(__dirname, "../data/cards.json");
 
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
   fs.readFile(cards, { encoding: "utf8" }, (err, data) => {
     if (err) {
-      console.log(err);
+      next(err);
       return;
     }
     res.send(data);
