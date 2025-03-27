@@ -4,20 +4,20 @@ const path = require("path");
 
 const users = path.join(__dirname, "../data/users.json");
 
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
   fs.readFile(users, { encoding: "utf8" }, (err, data) => {
     if (err) {
-      console.log(err);
+      next(err);
       return;
     }
     res.send(data);
   });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res, next) => {
   fs.readFile(users, { encoding: "utf8" }, (err, data) => {
     if (err) {
-      console.log(err);
+      next(err);
       return;
     }
 
