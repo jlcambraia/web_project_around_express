@@ -14,6 +14,14 @@ mongoose.connect("mongodb://127.0.0.1:27017/aroundb", {
   useNewUrlParser: true,
 });
 
+// Solução temporário de autorização
+app.use((req, res, next) => {
+  req.user = {
+    _id: "67ed6f5393f04f1913d36739",
+  };
+  next();
+});
+
 app.use("/users", usersRouter);
 app.use("/cards", cardRouter);
 
