@@ -32,6 +32,7 @@ module.exports.getUser = (req, res) => {
     });
 };
 
+/* eslint-disable-next-line consistent-return */
 module.exports.createUser = (req, res) => {
   const { name, about, avatar } = req.body;
 
@@ -54,6 +55,7 @@ module.exports.createUser = (req, res) => {
     });
 };
 
+/* eslint-disable-next-line consistent-return */
 module.exports.updateUser = (req, res) => {
   const { name, about } = req.body;
 
@@ -86,6 +88,7 @@ module.exports.updateUser = (req, res) => {
     });
 };
 
+/* eslint-disable-next-line consistent-return */
 module.exports.updateAvatar = (req, res) => {
   const { avatar } = req.body;
 
