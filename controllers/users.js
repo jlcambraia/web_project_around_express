@@ -54,6 +54,7 @@ module.exports.createUser = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
+/* eslint-enable consistent-return */
 
 /* eslint-disable-next-line consistent-return */
 module.exports.updateUser = (req, res) => {
@@ -87,6 +88,7 @@ module.exports.updateUser = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
+/* eslint-enable consistent-return */
 
 /* eslint-disable-next-line consistent-return */
 module.exports.updateAvatar = (req, res) => {
@@ -120,3 +122,4 @@ module.exports.updateAvatar = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
+/* eslint-enable consistent-return */
