@@ -53,3 +53,35 @@ module.exports.createUser = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
+
+module.exports.updateUser = (req, res) => {
+  const { name, about } = req.body;
+
+  if (!name && !about) {
+    return res.status(400).send({
+      message: "Dados inválidos fornecidos",
+    });
+  }
+
+  User.findByIdAndUpdate(
+    req.user._id,
+    { name, about },
+    {
+      new: true,
+      runValidators: true,
+    }
+  )
+    .orFail(() => {
+      const error = new Error("Usuário não encontrado");
+      error.name = "DocumentNotFoundError";
+      throw error;
+    })
+    .then((user) => res.send({ data: user }))
+    .catch((err) => {
+      console.log(err);
+      if (err.name === "CastError") {
+        return res.status(400).send({ message: "Dados inválidos fornecidos" });
+      }
+      return res.status(500).send({ message: "Ocorreu um erro no servidor" });
+    });
+};
