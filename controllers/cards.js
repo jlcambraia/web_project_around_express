@@ -35,13 +35,39 @@ module.exports.createCard = (req, res) => {
 };
 
 module.exports.deleteCard = (req, res) => {
-  Card.findByIdAndDelete(req.params.id)
+  Card.findByIdAndDelete(req.params.cardId)
     .orFail(() => {
       const error = new Error("Cartão não encontrado");
       error.name = "DocumentNotFoundError";
       throw error;
     })
     .then((card) => res.send({ data: card }))
+    .catch((err) => {
+      console.log(err);
+      if (err.name === "CastError") {
+        return res.status(400).send({ message: "ID de cartão inválido" });
+      }
+      if (err.name === "DocumentNotFundError") {
+        return res.status(404).send({ message: "Cartão não encontrado" });
+      }
+      return res.status(500).send({ message: "Ocorreu um erro no servidor" });
+    });
+};
+
+module.exports.likeCard = (req, res) => {
+  Card.findByIdAndUpdate(
+    req.params.cardId,
+    { $addToSet: { likes: req.user._id } },
+    { new: true }
+  )
+    .orFail(() => {
+      const error = new Error("Cartão não encontrado");
+      error.name = "DocumentNotFoundError";
+      throw error;
+    })
+    .then((card) => {
+      res.send({ data: card });
+    })
     .catch((err) => {
       console.log(err);
       if (err.name === "CastError") {
