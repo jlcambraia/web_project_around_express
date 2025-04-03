@@ -12,6 +12,7 @@ module.exports.getCards = (req, res) => {
     });
 };
 
+/* eslint-disable-next-line consistent-return */
 module.exports.createCard = (req, res) => {
   const { name, link } = req.body;
 
