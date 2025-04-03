@@ -34,6 +34,7 @@ module.exports.createCard = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
+/* eslint-enable consistent-return */
 
 module.exports.deleteCard = (req, res) => {
   Card.findByIdAndDelete(req.params.cardId)
