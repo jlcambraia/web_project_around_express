@@ -14,14 +14,24 @@ Este projeto é uma API backend desenvolvida com Express.js que fornece endpoint
 
 - Listar todos os usuários
 - Buscar usuários específicos por ID
+- Criar um novo usuário
+- Atualizar nome e descrição do usuário autenticado
+- Atualizar avatar do usuário autenticado
 
 ### Rota de Cards:
 
 - Listar todos os cards
+- Criar um novo card
+- Excluir um card por ID
+- Curtir um card
+- Remover curtida de um card
 
-### Tratamento de Rotas Não Encontradas:
+### Tratamento de Erros:
 
-- Resposta personalizada para rotas inexistentes
+- Resposta para erros de validação de dados
+- Resposta para ID inválido ou recurso não encontrado
+- Resposta para erros de servidor
+- Resposta para rotas inexistentes
 
 ## Técnicas e Tecnologias Utilizadas:
 
@@ -29,15 +39,13 @@ Este projeto é uma API backend desenvolvida com Express.js que fornece endpoint
 
 - Node.js
 - Express
-- FS para leitura de arquivos JSON
-- Path para manipulação de caminhos de arquivo
+- MongoDB e Mongoose
 
 ### Técnicas
 
 - Roteamento modular
 - Tratamento de erros
 - Middleware do Express
-- Leitura síncrona de arquivos JSON
 - Manipulação de parâmetros de URL
 - Configuração de porta dinâmica
 
@@ -47,6 +55,24 @@ Este projeto é uma API backend desenvolvida com Express.js que fornece endpoint
 2. Instale as dependências com `npm install`
 3. Inicie o servidor com `npm start`
 4. A API estará disponível em `http://localhost:3000`
+
+## Endpoints da API:
+
+### Usuários:
+
+- GET /users - Retorna todos os usuários
+- GET /users/:userId - Retorna um usuário pelo ID
+- POST /users - Cria um novo usuário
+- PATCH /users/me - Atualiza nome e sobre do usuário autenticado
+- PATCH /users/me/avatar - Atualiza o avatar do usuário autenticado
+
+### Cards:
+
+- GET /cards - Retorna todos os cards
+- POST /cards - Cria um novo card
+- DELETE /cards/:cardId - Exclui um card por ID
+- PUT /cards/:cardId/likes - Adiciona uma curtida ao card
+- DELETE /cards/:cardId/likes - Remove a curtida do card
 
 ## Próximos Passos
 
