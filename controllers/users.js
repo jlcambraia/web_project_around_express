@@ -32,7 +32,6 @@ module.exports.getUser = (req, res) => {
     });
 };
 
-/* eslint-disable-next-line consistent-return */
 module.exports.createUser = (req, res) => {
   const { name, about, avatar } = req.body;
 
@@ -42,7 +41,7 @@ module.exports.createUser = (req, res) => {
     });
   }
 
-  User.create({ name, about, avatar })
+  return User.create({ name, about, avatar })
     .then((user) => res.send({ data: user }))
     .catch((err) => {
       console.log(err);
@@ -54,9 +53,7 @@ module.exports.createUser = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
-/* eslint-enable consistent-return */
 
-/* eslint-disable-next-line consistent-return */
 module.exports.updateUser = (req, res) => {
   const { name, about } = req.body;
 
@@ -66,7 +63,7 @@ module.exports.updateUser = (req, res) => {
     });
   }
 
-  User.findByIdAndUpdate(
+  return User.findByIdAndUpdate(
     req.user._id,
     { name, about },
     {
@@ -88,9 +85,7 @@ module.exports.updateUser = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
-/* eslint-enable consistent-return */
 
-/* eslint-disable-next-line consistent-return */
 module.exports.updateAvatar = (req, res) => {
   const { avatar } = req.body;
 
@@ -100,7 +95,7 @@ module.exports.updateAvatar = (req, res) => {
     });
   }
 
-  User.findByIdAndUpdate(
+  return User.findByIdAndUpdate(
     req.user._id,
     { avatar },
     {
@@ -122,4 +117,3 @@ module.exports.updateAvatar = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
-/* eslint-enable consistent-return */
