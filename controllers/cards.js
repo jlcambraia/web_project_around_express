@@ -12,7 +12,6 @@ module.exports.getCards = (req, res) => {
     });
 };
 
-/* eslint-disable-next-line consistent-return */
 module.exports.createCard = (req, res) => {
   const { name, link } = req.body;
 
@@ -22,7 +21,7 @@ module.exports.createCard = (req, res) => {
     });
   }
 
-  Card.create({ name, link, owner: req.user._id })
+  return Card.create({ name, link, owner: req.user._id })
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       console.log(err);
@@ -34,7 +33,6 @@ module.exports.createCard = (req, res) => {
       return res.status(500).send({ message: "Ocorreu um erro no servidor" });
     });
 };
-/* eslint-enable consistent-return */
 
 module.exports.deleteCard = (req, res) => {
   Card.findByIdAndDelete(req.params.cardId)
