@@ -1,82 +1,138 @@
-# Tripleten web_project_around_express
+# Around the U.S. — Backend API
 
-## Nome do Projeto:
+A REST API developed with **Node.js, Express, MongoDB, and Mongoose** to manage user profiles and photo cards.
 
-Around the U.S. API
+Built as part of the **TripleTen Full Stack Web Development program**, this project demonstrates backend routing, database integration, CRUD operations, and REST API development.
 
-## Descrição do Projeto:
+## Overview
 
-Este projeto é uma API backend desenvolvida com Express.js que fornece endpoints para gerenciar dados de usuários e cards. A aplicação serve como backend para uma aplicação web, permitindo recuperar informações de usuários e cards através de rotas REST.
+Around the U.S. is a photo-sharing application where users can manage profiles and interact with photo cards. This repository contains the backend API responsible for handling user and card data.
 
-## Funcionalidades:
+## Features
 
-### Rota de Usuários:
+### User Management
+- Retrieve all users
+- Retrieve a user by ID
+- Create user records
+- Update profile information
+- Update profile avatars
 
-- Listar todos os usuários
-- Buscar usuários específicos por ID
-- Criar um novo usuário
-- Atualizar nome e descrição do usuário autenticado
-- Atualizar avatar do usuário autenticado
+### Photo Cards
+- Retrieve all photo cards
+- Create new cards
+- Delete cards by ID
+- Like photo cards
+- Remove likes from photo cards
 
-### Rota de Cards:
+### Backend Development
+- RESTful API endpoints
+- MongoDB integration with Mongoose
+- Express middleware and JSON request handling
+- Modular route organization
+- Error responses
 
-- Listar todos os cards
-- Criar um novo card
-- Excluir um card por ID
-- Curtir um card
-- Remover curtida de um card
+## Tech Stack
 
-### Tratamento de Erros:
+Node.js · Express 4 · MongoDB · Mongoose 8 · JavaScript · Nodemon · ESLint
 
-- Resposta para erros de validação de dados
-- Resposta para ID inválido ou recurso não encontrado
-- Resposta para erros de servidor
-- Resposta para rotas inexistentes
+## API Endpoints
 
-## Técnicas e Tecnologias Utilizadas:
+### Users
 
-### Tecnologias
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| GET | `/users` | Retrieve all users |
+| GET | `/users/:userId` | Retrieve a user by ID |
+| POST | `/users` | Create a user |
+| PATCH | `/users/me` | Update profile information |
+| PATCH | `/users/me/avatar` | Update profile avatar |
 
-- Node.js
-- Express
-- MongoDB e Mongoose
+### Cards
 
-### Técnicas
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| GET | `/cards` | Retrieve all cards |
+| POST | `/cards` | Create a card |
+| DELETE | `/cards/:cardId` | Delete a card |
+| PUT | `/cards/:cardId/likes` | Like a card |
+| DELETE | `/cards/:cardId/likes` | Remove a like |
 
-- Roteamento modular
-- Tratamento de erros
-- Middleware do Express
-- Manipulação de parâmetros de URL
-- Configuração de porta dinâmica
+## Application Architecture
 
-## Como Executar o Projeto
+```text
+HTTP Client
+     |
+Express Application
+     |
+Route Handlers
+     |
+Controllers
+     |
+Mongoose Models
+     |
+MongoDB
+```
 
-1. Clone o repositório
-2. Instale as dependências com `npm install`
-3. Inicie o servidor com `npm start`
-4. A API estará disponível em `http://localhost:3000`
+## Getting Started
 
-## Endpoints da API:
+Requires Node.js, npm, and MongoDB running locally.
 
-### Usuários:
+```bash
+git clone https://github.com/jlcambraia/web_project_around_express.git
+cd web_project_around_express
+npm install
+```
 
-- GET /users - Retorna todos os usuários
-- GET /users/:userId - Retorna um usuário pelo ID
-- POST /users - Cria um novo usuário
-- PATCH /users/me - Atualiza nome e sobre do usuário autenticado
-- PATCH /users/me/avatar - Atualiza o avatar do usuário autenticado
+The current application connects to a local MongoDB database:
 
-### Cards:
+```text
+mongodb://127.0.0.1:27017/aroundb
+```
 
-- GET /cards - Retorna todos os cards
-- POST /cards - Cria um novo card
-- DELETE /cards/:cardId - Exclui um card por ID
-- PUT /cards/:cardId/likes - Adiciona uma curtida ao card
-- DELETE /cards/:cardId/likes - Remove a curtida do card
+Start MongoDB before running the API.
 
-## Próximos Passos
+Development:
 
-- Implementar tratamento de erros mais robustos
-- Adicionar validação de dados
-- Integrar com banco de dados
-- Adicionar mais rotas e funcionalidades
+```bash
+npm run dev
+```
+
+Standard start:
+
+```bash
+npm start
+```
+
+By default, the server listens at http://localhost:3000. Set the `PORT` environment variable to use another port.
+
+## Authentication Status
+
+**Important:** This version uses temporary authorization middleware that assigns a predefined user ID to incoming requests. This is a development placeholder, not a complete authentication system.
+
+The project should not be presented as implementing production-ready user authentication.
+
+A separate iteration of Around the U.S. explores authentication and protected frontend routes.
+
+## Error Handling
+
+The application includes responses for unknown routes and server errors. More comprehensive validation and centralized error handling remain areas for improvement.
+
+## Project Scope
+
+This project focuses on backend fundamentals and database-driven application development, demonstrating the progression from frontend-only applications to server-side architecture with persistent data.
+
+## Potential Improvements
+
+- Replace temporary authorization with JWT authentication
+- Expand request validation
+- Improve centralized error handling
+- Add automated API tests
+- Document request and response schemas
+- Configure MongoDB through environment variables
+- Add deployment and monitoring documentation
+
+## Author
+
+**João Luiz Cambraia**
+
+[GitHub](https://github.com/jlcambraia) · [LinkedIn](https://www.linkedin.com/in/joaoluizcambraia/)
